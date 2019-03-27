@@ -13,6 +13,7 @@ services:
 
 before_install:
   - cd wbooks-api
+  - rm Gemfile.lock
   - "echo '--colour' > ~/.rspec"
   - "echo 'gem: --no-document' > ~/.gemrc"
   # Solves rainbow issue: https://github.com/sickill/rainbow/issues/48
