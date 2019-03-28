@@ -1,4 +1,4 @@
-class BooksController < ApplicationController
+class Api::V1::BooksController < ApplicationController
   include Wor::Paginate
 
   before_action :authenticate_user!
