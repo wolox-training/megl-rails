@@ -1,9 +1,11 @@
 class BooksController < ApplicationController
+  include Wor::Paginate
+
   before_action :authenticate_user!
 
   def index
     @books = Book.all
-    render json: @books, each_serializer: BookIndexSerializer
+    render_paginated @books, each_serializer: BookIndexSerializer
   end
 
   def show
