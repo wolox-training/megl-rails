@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(version: 20190327210716) do
   create_table "rents", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
-    t.date "borrowed_at", null: false
-    t.date "returned_at", null: false
+    t.date "rented_from", null: false
+    t.date "rented_to", null: false
+    t.date "returned_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_rents_on_book_id"
