@@ -1,12 +1,10 @@
 FactoryBot.define do
   factory :book do
-    factory :valid_book do
-      genre { 'Dystopian' }
-      author { 'Ray Bradbury' }
-      image
-      title { 'Fahrenheit 451' }
-      publisher { 'Ballantine Books' }
-      year { '1953' }
-    end
+    genre { Faker::Book.genre }
+    author { Faker::Book.author }
+    image
+    title { Faker::Book.title }
+    editor { Faker::Book.publisher }
+    year { Faker::Date.birthday.year }
   end
 end

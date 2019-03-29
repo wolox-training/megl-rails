@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Book do
   context 'when a valid book is built' do
-    subject(:book) { build(:valid_book) }
+    subject(:book) { build(:book) }
 
     it { is_expected.to be_valid }
     it { is_expected.to validate_presence_of(:genre) }
@@ -14,19 +14,19 @@ describe Book do
   end
 
   context 'when an invalid book is built' do
-    subject(:book) { build(:book) }
+    subject(:book) { build(:book, title: nil) }
 
     it { is_expected.to_not be_valid }
   end
 
   context 'when a valid book is created' do
-    subject(:book) { create(:valid_book) }
+    subject(:book) { create(:book) }
 
     it { is_expected.to be_persisted }
   end
 
   context 'when an invalid book is created' do
-    let(:book) { build(:book) }
+    let(:book) { build(:book, title: nil) }
 
     it 'raises an invalid record error' do
       expect { book.save! }.to raise_error ActiveRecord::RecordInvalid
