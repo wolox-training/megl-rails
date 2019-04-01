@@ -3,6 +3,7 @@ require 'controllers/api/v1/authenticated_user'
 
 describe Api::V1::BooksController do
   include_context 'Authenticated User'
+  include Response::JSONParser
 
   describe 'GET #index' do
     context 'when fetching all the books' do
@@ -17,9 +18,7 @@ describe Api::V1::BooksController do
           books, serializer: BookIndexSerializer
         ).to_json)
 
-        content = JSON.parse(response.body)['page']
-
-        expect(content).to eq expected
+        expect(expected).to eq response_body['page']
       end
 
       it 'responds with 200 status' do
@@ -41,8 +40,7 @@ describe Api::V1::BooksController do
           book
         ).to_json)
 
-        content = JSON.parse(response.body)
-        expect(expected).to eq content
+        expect(expected).to eq response_body
       end
 
       it 'responds with 200 status' do
