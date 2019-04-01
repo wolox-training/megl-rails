@@ -1,0 +1,15 @@
+<h1>Rent creation on wbooks-api</h1>
+<p>
+  On <%= @rent.created_at.to_s(:short) %>, you have successfully created a rent for the following book:<br>
+</p>
+<ul>
+    <li>Title: <%= @rent.book.title %> </li>
+    <li>Author: <%= @rent.book.author %> </li>
+    <li>Publisher: <%= @rent.book.publisher %> </li>
+    <li>Year: <%= @rent.book.year %> </li>
+    <li>Genre: <%= @rent.book.genre %> </li>
+</ul>
+<p>
+  The rent of the previously described book will be from <%= @rent.rented_from.to_s(:short) %> to <%= @rent.rented_to.to_s(:short) %>.
+</p>
+<p>Thanks for using our service!</p>

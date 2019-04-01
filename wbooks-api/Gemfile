@@ -39,6 +39,8 @@ gem 'devise_token_auth', '~> 1.1.0'
 gem 'active_model_serializers', '~> 0.10.9'
 gem 'wor-paginate', '~> 0.1.4'
 
+gem 'sidekiq', '~> 5.0.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -49,6 +51,7 @@ group :development, :test do
   gem 'scss_lint', '~> 0.57.1'
   gem 'faker', '~> 1.9.3'
   gem 'factory_bot_rails', '~> 5.0.1'
+  gem 'dotenv-rails', '~> 2.2.1'
 end
 
 group :test do

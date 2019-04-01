@@ -14,6 +14,7 @@ module Api
       def create
         rent = Rent.new(rent_params)
         if rent.save
+          RentCreationEmailWorker.perform_async(current_user.id, rent.id)
           head :ok
         else
           head :bad_request
