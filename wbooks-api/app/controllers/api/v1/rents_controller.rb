@@ -2,23 +2,24 @@ module Api
   module V1
     class RentsController < ApiController
       def index
-        rents = Rent.all
-        render_paginated rents, each_serializer: RentSerializer
+        render_paginated Rent.all, each_serializer: RentSerializer
       end
 
       def show
-        rent = Rent.find(params[:id])
-        render json: rent, serializer: RentSerializer
+        render json: Rent.find(params[:id]), serializer: RentSerializer
+      rescue ActiveRecord::RecordNotFound
+        head :not_found
       end
 
       def create
         rent = Rent.new(rent_params)
-        if rent.save
-          RentCreationEmailWorker.perform_async(current_user.id, rent.id)
-          head :ok
-        else
+
+        unless rent.save
           head :bad_request
+          return
         end
+
+        render json: rent, status: :created, serializer: RentSerializer
       end
 
       private
