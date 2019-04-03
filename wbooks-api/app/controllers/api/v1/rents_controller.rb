@@ -2,19 +2,17 @@ module Api
   module V1
     class RentsController < ApiController
       def index
-        rents = Rent.all
-        render_paginated rents, each_serializer: RentSerializer
+        render_paginated Rent.all, each_serializer: RentSerializer
       end
 
       def show
-        rent = Rent.find(params[:id])
-        render json: rent, serializer: RentSerializer
+        render json: Rent.find(params[:id]), serializer: RentSerializer
       end
 
       def create
         rent = Rent.new(rent_params)
         if rent.save
-          head :ok
+          render json: rent, serializer: RentSerializer
         else
           head :bad_request
         end
