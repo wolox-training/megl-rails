@@ -47,5 +47,15 @@ describe Api::V1::BooksController do
         expect(response).to have_http_status(:ok)
       end
     end
+
+    context 'when fetching an invalid book' do
+      before do
+        get :show, params: { id: 1 }
+      end
+
+      it 'responds with 404 status' do
+        expect(response).to have_http_status(:not_found)
+      end
+    end
   end
 end
