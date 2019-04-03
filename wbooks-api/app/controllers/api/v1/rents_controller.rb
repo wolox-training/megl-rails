@@ -13,8 +13,10 @@ module Api
 
       def create
         rent = Rent.new(rent_params)
-
-        unless rent.save
+        if rent.save
+          UserMailer.rent_creation_email(current_user, rent).deliver_later
+          head :ok
+        else
           head :bad_request
           return
         end
