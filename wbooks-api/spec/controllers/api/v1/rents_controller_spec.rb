@@ -7,7 +7,7 @@ describe Api::V1::RentsController do
 
   describe 'GET #index' do
     context 'when fetching all the rents' do
-      let!(:rents) { create_list(:rent, 3) }
+      let!(:rents) { create_list(:rent, 3, user: user) }
 
       before do
         get :index
@@ -29,7 +29,7 @@ describe Api::V1::RentsController do
 
   describe 'GET #show' do
     context 'when fetching a rent' do
-      let!(:rent) { create(:rent) }
+      let!(:rent) { create(:rent, user: user) }
 
       before do
         get :show, params: { id: rent.id }
