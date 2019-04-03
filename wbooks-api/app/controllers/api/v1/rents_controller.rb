@@ -11,11 +11,13 @@ module Api
 
       def create
         rent = Rent.new(rent_params)
-        if rent.save
-          render json: rent, serializer: RentSerializer
-        else
+
+        unless rent.save
           head :bad_request
+          return
         end
+
+        render json: rent, serializer: RentSerializer
       end
 
       private
