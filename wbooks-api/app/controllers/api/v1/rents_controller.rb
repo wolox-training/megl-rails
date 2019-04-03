@@ -7,6 +7,8 @@ module Api
 
       def show
         render json: Rent.find(params[:id]), serializer: RentSerializer
+      rescue ActiveRecord::RecordNotFound
+        head :not_found
       end
 
       def create
@@ -17,7 +19,7 @@ module Api
           return
         end
 
-        render json: rent, serializer: RentSerializer
+        render json: rent, status: :created, serializer: RentSerializer
       end
 
       private
