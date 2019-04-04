@@ -19,7 +19,7 @@ module Api
           return
         end
 
-        render json: OpenLibrary.search(params[:isbn])
+        render json: book
       end
     end
   end
