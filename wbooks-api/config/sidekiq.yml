@@ -1,4 +1,5 @@
 :schedule:
-  rent_expiration_mailer:
-    cron: '0 * * * * *'
-    class: RentExpirationMailer
+  rent_expiration_mailer_job:
+    cron: '0 0 9 * * * America/Buenos_Aires'
+    class: RentExpirationMailerJob
+    queue: mailers

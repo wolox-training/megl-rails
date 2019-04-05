@@ -1,5 +1,7 @@
-class RentExpirationMailer < ApplicationJob
+class RentExpirationMailerJob < ApplicationJob
   def perform
-    UserMailer.rent_expiration_email.deliver_now
+    Rent.expired.each do |rent|
+      UserMailer.rent_expiration_email(rent.user, rent).deliver_now
+    end
   end
 end

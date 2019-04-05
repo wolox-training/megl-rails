@@ -1,6 +1,6 @@
 <h1><%= t '.title' %></h1>
 <p>
-  <%= t('.current_date_msg', date: Date.today %><br>
+  <%= t('.current_date_msg', date: Time.zone.today.to_s(:short)) %><br>
 </p>
 <ul>
     <li><%= t('.book_title', title: @rent.book.title) %></li>
