@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
-  include DeviseTokenAuth::Concerns::SetUserByToken
-  include Pundit
+  protect_from_forgery with: :exception
 
-  protect_from_forgery with: :null_session
+  def access_denied
+    reset_session
+    redirect_to new_admin_user_session_path
+  end
 end

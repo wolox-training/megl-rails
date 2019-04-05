@@ -1,6 +1,8 @@
 module Api
   module V1
     class BookSuggestionsController < ApplicationController
+      protect_from_forgery with: :null_session
+
       def create
         book_suggestion = BookSuggestion.new(book_suggestion_params)
 
