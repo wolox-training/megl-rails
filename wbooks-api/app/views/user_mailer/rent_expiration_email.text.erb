@@ -1,7 +1,7 @@
 <%= t '.title' %>
 ===============================================
 
-<%= t('.current_date_msg', date: @rent.created_at.to_s(:short)) %>
+<%= t('.current_date_msg', date: Date.today %>
 
 <%= t('.book_title', title: @rent.book.title) %>
 <%= t('.book_author', author: @rent.book.author) %>

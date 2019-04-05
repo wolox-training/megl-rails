@@ -1,0 +1,23 @@
+es:
+  user_mailer:
+    thanks_msg: '¡Gracias por utilizar nuestro servicio!'
+    rent_creation_email:
+      subject: 'wbooks-api - Creación de alquiler'
+      title: 'Creación de un alquiler en wbooks-api'
+      current_date_msg: 'En %{date}, has creado exitosamente un alquiler para el siguiente libro:'
+      book_title: 'Título: %{title}'
+      book_author: 'Autor: %{author}'
+      book_publisher: 'Editor: %{publisher}'
+      book_year: 'Año: %{year}'
+      book_genre: 'Género: %{genre}'
+      rent_duration_msg: 'El alquiler del libro descripto previamente será desde %{rented_from} hasta %{rented_to}.'
+    rent_expiration_email:
+      subject: 'wbooks-api - Vencimiento de alquiler'
+      title: 'Vencimiento de un alquiler en wbooks-api'
+      current_date_msg: 'En %{date}, se ha vencido el alquiler del siguiente libro:'
+      book_title: 'Título: %{title}'
+      book_author: 'Autor: %{author}'
+      book_publisher: 'Editor: %{publisher}'
+      book_year: 'Año: %{year}'
+      book_genre: 'Género: %{genre}'
+      rent_duration_msg: 'El alquiler del libro descripto previamente fue desde %{rented_from} hasta %{rented_to}.'

@@ -31,3 +31,25 @@
 
 en:
   hello: "Hello world"
+  user_mailer:
+    thanks_msg: 'Thanks for using our service!'
+    rent_creation_email:
+      subject: 'wbooks-api - Rent creation'
+      title: 'Rent creation on wbooks-api'
+      current_date_msg: 'On %{date}, you have successfully created a rent for the following book:'
+      book_title: 'Title: %{title}'
+      book_author: 'Author: %{author}'
+      book_publisher: 'Publisher: %{publisher}'
+      book_year: 'Year: %{year}'
+      book_genre: 'Genre: %{genre}'
+      rent_duration_msg: 'The rent of the previously described book will be from %{rented_from} to %{rented_to}.'
+    rent_expiration_email:
+      subject: 'wbooks-api - Rent expiration'
+      title: 'Rent expiration on wbooks-api'
+      current_date_msg: 'On %{date}, the rent of the following book has expired:'
+      book_title: 'Title: %{title}'
+      book_author: 'Author: %{author}'
+      book_publisher: 'Publisher: %{publisher}'
+      book_year: 'Year: %{year}'
+      book_genre: 'Genre: %{genre}'
+      rent_duration_msg: 'The rent of the previously described book was from %{rented_from} to %{rented_to}.'

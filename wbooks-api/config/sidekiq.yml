@@ -1,0 +1,4 @@
+:schedule:
+  rent_expiration_mailer:
+    cron: '0 * * * * *'
+    class: RentExpirationMailer
