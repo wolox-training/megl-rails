@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20190327210716) do
     t.string "nickname"
     t.string "image"
     t.string "email"
+    t.string "locale"
     t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

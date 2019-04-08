@@ -1,13 +1,14 @@
-Rent creation on wbooks-api
+<%= t :title %>
 ===============================================
 
-On <%= @rent.created_at.to_s(:short) %>, you have successfully created a rent for the following book:
+<%= t(:current_date_msg, date: @rent.created_at.to_s(:short)) %>
 
-Title: <%= @rent.book.title %>
-Author: <%= @rent.book.author %>
-Publisher: <%= @rent.book.publisher %>
-Year: <%= @rent.book.year %>
-Genre: <%= @rent.book.genre %>
+<%= t(:book_title, title: @rent.book.title) %>
+<%= t(:book_author, author: @rent.book.author) %>
+<%= t(:book_publisher, publisher: @rent.book.publisher) %>
+<%= t(:book_year, year: @rent.book.year) %>
+<%= t(:book_genre, genre: @rent.book.genre) %>
 
-The rent of the previously described book will be from <%= @rent.rented_from.to_s(:short) %> to <%= @rent.rented_to.to_s(:short) %>.
-Thanks for using our service!
+<%= t(:rent_duration_msg, rented_from: @rent.rented_from.to_s(:short), rented_to: @rent.rented_to.to_s(:short)) %>
+
+<%= t :thanks_msg %>

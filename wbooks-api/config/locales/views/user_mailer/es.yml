@@ -1,0 +1,11 @@
+es:
+  subject: 'wbooks-api - Creación de alquiler'
+  title: 'Creación de un alquiler en wbooks-api'
+  current_date_msg: 'En %{date}, has creado exitosamente un alquiler para el siguiente libro:'
+  book_title: 'Título: %{title}'
+  book_author: 'Autor: %{author}'
+  book_publisher: 'Editor: %{publisher}'
+  book_year: 'Año: %{year}'
+  book_genre: 'Género: %{genre}'
+  rent_duration_msg: 'El alquiler del libro descripto previamente será desde %{rented_from} hasta %{rented_to}.'
+  thanks_msg: '¡Gracias por utilizar nuestro servicio!'
