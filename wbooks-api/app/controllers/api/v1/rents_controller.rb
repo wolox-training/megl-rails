@@ -19,6 +19,8 @@ module Api
           return
         end
 
+        UserMailer.rent_creation_email(current_user, rent).deliver_later
+
         render json: rent, status: :created, serializer: RentSerializer
       end
 
