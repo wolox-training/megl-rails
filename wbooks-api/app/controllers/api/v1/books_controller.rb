@@ -7,6 +7,8 @@ module Api
 
       def show
         render json: Book.find(params[:id]), serializer: BookShowSerializer
+      rescue ActiveRecord::RecordNotFound
+        head :not_found
       end
     end
   end
