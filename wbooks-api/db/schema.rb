@@ -18,10 +18,17 @@ ActiveRecord::Schema.define(version: 20190327210716) do
   create_table "books", force: :cascade do |t|
     t.string "genre", null: false
     t.string "author", null: false
-    t.string "image", null: false
     t.string "title", null: false
-    t.string "editor", null: false
+    t.bigint "image_id", null: false
+    t.string "publisher", null: false
     t.string "year", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_books_on_image_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,8 +36,9 @@ ActiveRecord::Schema.define(version: 20190327210716) do
   create_table "rents", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
-    t.date "borrowed_at", null: false
-    t.date "returned_at", null: false
+    t.date "rented_from", null: false
+    t.date "rented_to", null: false
+    t.date "returned_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_rents_on_book_id"
@@ -64,6 +72,7 @@ ActiveRecord::Schema.define(version: 20190327210716) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "books", "images"
   add_foreign_key "rents", "books"
   add_foreign_key "rents", "users"
 end
