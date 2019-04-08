@@ -4,12 +4,9 @@ module Api
       def create
         book_suggestion = BookSuggestion.new(book_suggestion_params)
 
-        unless book_suggestion.save
-          head :bad_request
-          return
-        end
+        head(:bad_request) && return unless book_suggestion.save
 
-        render json: book_suggestion, status: :created, serializer: BookSuggestionSerializer
+        render json: book_suggestion, status: :created
       end
 
       private
