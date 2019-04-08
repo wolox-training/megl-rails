@@ -7,13 +7,15 @@ describe Api::V1::RentsController do
 
   describe 'GET #index' do
     context 'when fetching all the rents' do
+      let!(:another_user) { create(:user) }
       let!(:rents) { create_list(:rent, 3, user: user) }
+      let!(:rents_from_another_user) { create_list(:rent, 3, user: another_user) }
 
       before do
         get :index
       end
 
-      it 'responses with all the rents' do
+      it 'responses with all the rents from that user' do
         expected = JSON.parse(ActiveModel::Serializer::CollectionSerializer.new(
           rents, serializer: RentSerializer
         ).to_json)
@@ -51,6 +53,19 @@ describe Api::V1::RentsController do
     context 'when fetching an invalid rent' do
       before do
         get :show, params: { id: 1 }
+      end
+
+      it 'responds with 404 status' do
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+
+    context 'when fetching a rent from another user' do
+      let!(:another_user) { create(:user) }
+      let!(:rent) { create(:rent, user: another_user) }
+
+      before do
+        get :show, params: { id: rent.id }
       end
 
       it 'responds with 404 status' do
