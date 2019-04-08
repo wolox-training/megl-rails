@@ -17,10 +17,8 @@ class OpenLibrary
     return {} unless valid_isbn?(isbn)
 
     response = HTTParty.get("https://openlibrary.org/api/books?bibkeys=ISBN:#{isbn}"\
-                            '&format=json&jscmd=data').values
+                            '&format=json&jscmd=data')
 
-    return {} if response.empty?
-
-    response.empty? ? {} : build_response(response[0])
+    response.success? && !response.values.empty? ? build_response(response.values[0]) : {}
   end
 end
