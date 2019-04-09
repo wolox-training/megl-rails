@@ -14,7 +14,7 @@ module Api
       def search
         book = OpenLibrary.search(params[:isbn])
 
-        head(:not_found) && return if book.empty?
+        return head(:not_found) if book.empty?
 
         render json: book
       end
