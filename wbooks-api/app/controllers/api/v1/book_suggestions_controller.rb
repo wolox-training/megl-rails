@@ -4,7 +4,7 @@ module Api
       def create
         book_suggestion = BookSuggestion.new(book_suggestion_params)
 
-        head(:bad_request) && return unless book_suggestion.save
+        return head(:bad_request) unless book_suggestion.save
 
         render json: book_suggestion, status: :created
       end
