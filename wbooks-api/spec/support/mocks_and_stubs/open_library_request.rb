@@ -10,6 +10,7 @@ module OpenLibraryMockRequest
   end
 
   def self.url(isbn)
-    "https://openlibrary.org/api/books?bibkeys=ISBN:#{isbn}&format=json&jscmd=data"
+    "#{Rails.application.secrets.open_library_api}books?bibkeys=ISBN:#{isbn}" \
+    '&format=json&jscmd=data'
   end
 end
