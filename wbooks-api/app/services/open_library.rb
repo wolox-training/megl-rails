@@ -12,12 +12,10 @@ class OpenLibrary
   end
 
   def self.search(isbn)
-    isbn.freeze
-
     return {} unless valid_isbn?(isbn)
 
-    response = HTTParty.get("https://openlibrary.org/api/books?bibkeys=ISBN:#{isbn}"\
-                            '&format=json&jscmd=data')
+    response = HTTParty.get("#{Rails.application.secrets.open_library_api}books?bibkeys=ISBN:"\
+                            "#{isbn}&format=json&jscmd=data")
 
     response.success? && !response.values.empty? ? build_response(response.values[0]) : {}
   end
