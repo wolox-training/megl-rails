@@ -10,6 +10,14 @@ module Api
       rescue ActiveRecord::RecordNotFound
         head :not_found
       end
+
+      def search
+        book = OpenLibrary.search(params[:isbn])
+
+        return head(:not_found) if book.empty?
+
+        render json: book
+      end
     end
   end
 end
