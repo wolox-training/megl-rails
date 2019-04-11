@@ -60,25 +60,30 @@ describe Api::V1::BooksController do
   end
 
   describe 'GET #search' do
-    book = {
-      isbn: '0385472579',
-      title: 'Zen speaks',
-      subtitle: 'shouts of nothingness',
-      number_of_pages: 159,
-      authors: [
-        'Zhizhong Cai'
-      ]
-    }
+    let!(:isbn) { '0385472579' }
+    let!(:invalid_isbn) { '13483783354345434' }
+
+    let!(:book) do
+      {
+        isbn: isbn,
+        title: Faker::Book.title,
+        subtitle: Faker::GreekPhilosophers.quote,
+        number_of_pages: Faker::Number.number(3),
+        authors: [
+          Faker::Book.author
+        ]
+      }
+    end
 
     before do
       open_library = class_double('OpenLibrary').as_stubbed_const
-      allow(open_library).to receive(:search).with('0385472579').and_return(book)
-      allow(open_library).to receive(:search).with('13483783354345434').and_return({})
+      allow(open_library).to receive(:search).with(isbn).and_return(book)
+      allow(open_library).to receive(:search).with(invalid_isbn).and_return({})
     end
 
     context 'when searching a valid book' do
       before do
-        get :search, params: { isbn: '0385472579' }
+        get :search, params: { isbn: isbn }
       end
 
       it 'responses with the book' do
@@ -91,13 +96,9 @@ describe Api::V1::BooksController do
     end
 
     context 'when fetching an invalid book' do
-      before do
-        get :search, params: { isbn: '13483783354345434' }
-      end
+      subject(:http_request) { get :search, params: { isbn: invalid_isbn } }
 
-      it 'responds with 404 status' do
-        expect(response).to have_http_status(:not_found)
-      end
+      it { is_expected.to have_http_status(:not_found) }
     end
   end
 end
