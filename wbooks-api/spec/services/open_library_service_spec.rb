@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/mocks_and_stubs/open_library_request'
 
 describe OpenLibrary do
   context 'when a valid book is searched' do
