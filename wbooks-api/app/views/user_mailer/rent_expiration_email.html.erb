@@ -3,11 +3,11 @@
   <%= t('.current_date_msg', date: Time.zone.today.to_s(:short)) %><br>
 </p>
 <ul>
-    <li><%= t('.book_title', title: @rent.book.title) %></li>
-    <li><%= t('.book_author', author: @rent.book.author) %></li>
-    <li><%= t('.book_publisher', publisher: @rent.book.publisher) %></li>
-    <li><%= t('.book_year', year: @rent.book.year) %></li>
-    <li><%= t('.book_genre', genre: @rent.book.genre) %></li>
+  <li><%= t('.book_title', title: @rent.book.title) %></li>
+  <li><%= t('.book_author', author: @rent.book.author) %></li>
+  <li><%= t('.book_publisher', publisher: @rent.book.publisher) %></li>
+  <li><%= t('.book_year', year: @rent.book.year) %></li>
+  <li><%= t('.book_genre', genre: @rent.book.genre) %></li>
 </ul>
 <p>
   <%= t('.rent_duration_msg', rented_from: @rent.rented_from.to_s(:short), rented_to: @rent.rented_to.to_s(:short)) %>
