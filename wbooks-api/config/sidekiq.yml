@@ -1,0 +1,5 @@
+:schedule:
+  rent_expiration_mailer_job:
+    cron: '0 0 9 * * * America/Buenos_Aires'
+    class: RentExpirationMailerJob
+    queue: mailers
