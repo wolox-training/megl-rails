@@ -2,7 +2,7 @@ class ChangeTitleOnBooks < ActiveRecord::Migration[5.1]
   def change
     reversible do |dir|
       dir.up do
-        Book.where('length(title) > 25').each do |book|
+        Book.where('length(title) > 25').find_each do |book|
           book.title = "#{book.title[0..21]}..."
           book.save!
         end
