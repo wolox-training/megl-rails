@@ -3,7 +3,7 @@ FactoryBot.define do
     genre { Faker::Book.genre }
     author { Faker::Book.author }
     image
-    title { Faker::Book.title }
+    title { Faker::Book.title[0..24] }
     publisher { Faker::Book.publisher }
     year { Faker::Date.birthday.year }
 
