@@ -46,6 +46,8 @@ gem 'pundit', '~> 1.1.0'
 
 gem 'httparty', '~> 0.15.6'
 
+gem 'activeadmin', '~> 1.4.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -53,7 +55,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.8.2'
-  gem 'scss_lint', '~> 0.57.1'
+  gem 'scss_lint', '~> 0.57.1', require: false
   gem 'faker', '~> 1.9.3'
   gem 'factory_bot_rails', '~> 5.0.1'
   gem 'dotenv-rails', '~> 2.2.1'
